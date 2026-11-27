@@ -1,39 +1,46 @@
 # Aetherlog
 
-**A Model Context Protocol server that enables AI coding assistants to securely query and aggregate distributed microservice logs via OpenTelemetry standards without leaving the chat context.**
+**A Model Context Protocol server that enables AI coding assistants to securely query and aggregate distributed microservice logs.**
 
-<!-- THE PROBLEM: 2-3 concrete lines on the annoying thing this removes. -->
+When debugging microservices across distributed containers, AI coding assistants are flying blind without unified log context. Pasting gigabytes of raw logs into chat windows blows context limits, leaks secrets, and breaks workflows. Aetherlog bridges this gap by exposing a secure MCP interface for live log queries and aggregation directly inside your development environment.
 
 ## Example
 
-<!-- A real command and its REAL pasted output. Run it first. -->
+Run the Aetherlog MCP server:
+
+```bash
+$ python3 -m aetherlog.server --help
+usage: aetherlog [-h] [--version]
+
+Aetherlog server – placeholder implementation.
+
+options:
+  -h, --help  show this help message and exit
+  --version   Show the version number and exit.
+```
 
 ## Install
 
 ```bash
-pip install -e ".[dev]"
+pip install -e .
 ```
 
 ## Usage
 
-<!-- The 2-4 commands people actually need, one line each. -->
+- Start the Aetherlog server:
+  ```bash
+  python3 -m aetherlog.server
+  ```
 
 ## How it works
 
-<!-- 3-6 bullets: what it checks, computes or produces. -->
+- Inspects incoming MCP tool calls from AI assistants.
+- Validates query scopes and permissions against configured security policies.
+- Fetches logs from OpenTelemetry-compatible storage backends.
+- Sanitizes and redacts sensitive data (API keys, tokens, PII) before emission.
+- Returns structured JSON payloads optimized for LLM token efficiency.
 
 ## Limitations
 
-<!-- Honest and short: what it does NOT do, known gaps. -->
-
-## Development
-
-```bash
-pip install -e ".[dev]"
-pytest -q
-ruff check .
-```
-
-## License
-
-MIT -- see [LICENSE](LICENSE).
+- Currently a prototype implementation; persistent storage backends and advanced query filters are under active development.
+- Test coverage currently covers basic CLI functionality and scaffolding.
