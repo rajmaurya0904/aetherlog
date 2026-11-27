@@ -42,5 +42,6 @@ pip install -e .
 
 ## Limitations
 
-- Currently a prototype implementation; persistent storage backends and advanced query filters are under active development.
-- Test coverage currently covers basic CLI functionality and scaffolding.
+- Uses in-memory storage for log records.
+- Enforces a payload size cap on log ingestion and queries.
+- Lacks built-in authentication for connections.
